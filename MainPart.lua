@@ -85,6 +85,7 @@ end)
 
 game.Players.LocalPlayer.Chatted:Connect(function(ChatRe)
 	if ChatRe == "/e resolve" or "/e res" or "/e re" then
+	local RunService = game:GetService("RunService")
 		RunService.Heartbeat:Connect(function()
 			pcall(function()
 				for i,v in pairs(game.Players:GetChildren()) do
