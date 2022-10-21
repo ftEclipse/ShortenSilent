@@ -82,3 +82,20 @@ RunService.Heartbeat:Connect(function()
         end
     end)
 end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(ChatRe)
+	if ChatRe == "/e resolve" or "/e res" or "/e re" then
+	local RunService = game:GetService("RunService")
+		RunService.Heartbeat:Connect(function()
+			pcall(function()
+				for i,v in pairs(game.Players:GetChildren()) do
+					if v.Name ~= game.Players.LocalPlayer.Name then
+						local hrp = v.Character.HumanoidRootPart
+						hrp.Velocity = Vector3.new(EclipseSets.Prediction, 0, EclipseSets.Prediction)    
+						hrp.AssemblyLinearVelocity = Vector3.new(EclipseSets.Prediction, 0, EclipseSets.Prediction)   
+					end
+				end
+			end)
+		end)
+	end
+end)
