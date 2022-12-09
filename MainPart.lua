@@ -21,8 +21,8 @@ RunService.Heartbeat:Connect(function()
         for i,v in pairs(game.Players:GetChildren()) do
             if v.Name ~= game.Players.LocalPlayer.Name then
                 local hrp = v.Character.HumanoidRootPart
-                 hrp.Velocity = Vector3.new(EclipseSets.Prediction, 0, EclipseSets.Predictio)    
-                hrp.AssemblyLinearVelocity = Vector3.new(EclipseSets.Predictio, 0, EclipseSets.Predictio)
+                 hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+                hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)
             end
         end
     end)
@@ -76,8 +76,8 @@ RunService.Heartbeat:Connect(function()
         for i,v in pairs(game.Players:GetChildren()) do
             if v.Name ~= game.Players.LocalPlayer.Name then
                 local hrp = v.Character.HumanoidRootPart
-            	hrp.Velocity = Vector3.new(EclipseSets.Prediction, 0, EclipseSets.Prediction)    
-				hrp.AssemblyLinearVelocity = Vector3.new(EclipseSets.Prediction, 0, EclipseSets.Prediction)
+            	hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+				hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)
             end
         end
     end)
@@ -85,6 +85,23 @@ end)
 
 game.Players.LocalPlayer.Chatted:Connect(function(ChatRe)
 	if ChatRe == "/e resolve" or "/e res" or "/e re" then
+	local RunService = game:GetService("RunService")
+		RunService.Heartbeat:Connect(function()
+			pcall(function()
+				for i,v in pairs(game.Players:GetChildren()) do
+					if v.Name ~= game.Players.LocalPlayer.Name then
+						local hrp = v.Character.HumanoidRootPart
+						hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+						hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)   
+					end
+				end
+			end)
+		end)
+	end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(ReV)
+	if ReV == "/e resv2" or "/e rev2" or "/e v2" then
 	local RunService = game:GetService("RunService")
 		RunService.Heartbeat:Connect(function()
 			pcall(function()
